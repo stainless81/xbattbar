@@ -1,12 +1,12 @@
 #!/usr/bin/python
 
-with open("/sys/class/power_supply/mains/online") as fp:
+with open("/sys/class/power_supply/ACAD/online") as fp:
     ac = fp.read(1)
 ac = {'0':'off','1':'on'}[ac]
 
-with open("/sys/class/power_supply/battery/charge_now") as fp:
+with open("/sys/class/power_supply/BAT0/energy_now") as fp:
     now = int(fp.read())
-with open("/sys/class/power_supply/battery/charge_full") as fp:
+with open("/sys/class/power_supply/BAT0/energy_full") as fp:
     full = int(fp.read())
 battery = now * 100 / full
 
